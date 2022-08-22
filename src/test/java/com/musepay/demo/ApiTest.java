@@ -15,7 +15,7 @@ public class ApiTest {
      */
     public static String platformKey = "";
 
-    private final String baseUrl = "http://18.163.123.18:7008/v1/open/api/";
+    private final String baseUrl = "http://api.dev.musepay.io/v1/open/api/";
 
     private final MusepayClient client = MusepayClient.build(baseUrl, privateKey, platformKey);
 
