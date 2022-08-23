@@ -1,6 +1,5 @@
 package com.musepay.demo.dto;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.ToString;
 
@@ -35,9 +34,6 @@ public class PayOrderRequest extends CommonRequest {
     // 商户用户ID
     @NotBlank
     private String customer_ref_id;
-
-    // 扩展信息
-    private JSONObject metadata;
 
     // 通知地址
     private String notify_url;
