@@ -15,7 +15,7 @@ public class ApiTest {
      */
     public static String platformKey = "";
 
-    private final String baseUrl = "http://api.dev.musepay.io/v1/open/api/";
+    private final String baseUrl = "http://api.dev.musepay.io/v1/";
 
     private final MusepayClient client = MusepayClient.build(baseUrl, privateKey, platformKey);
 
@@ -92,6 +92,20 @@ public class ApiTest {
         String respStr = client.withdrawCoin(String.valueOf(System.currentTimeMillis()),
                 "BNB_BSC",
                 "0xADFB656a8D0c0D22c523404c23699f9299975216",
+                "0.3",
+                "C100001",
+                null,
+                "2000051",
+                String.valueOf(System.currentTimeMillis()));
+
+        System.out.println(respStr);
+    }
+
+    // 商户划转b2c
+    @Test
+    public void payout() {
+        String respStr = client.payout(String.valueOf(System.currentTimeMillis()),
+                "BNB_BSC",
                 "0.3",
                 "C100001",
                 null,

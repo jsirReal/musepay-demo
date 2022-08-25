@@ -160,7 +160,7 @@ public class MusepayClient {
     public String withdrawCoin(String request_id, String currency, String address, String amount, String customer_ref_id, String notify_url,
                                String partner_id, String nonce) {
         ExtractOrderRequest request = new ExtractOrderRequest();
-        request.setRequest_id(String.valueOf(System.currentTimeMillis()));
+        request.setRequest_id(request_id);
         request.setCurrency(currency);
         request.setAddress(address);
         request.setAmount(amount);
@@ -175,6 +175,37 @@ public class MusepayClient {
         SignUtils.sign(request, merchantPrivateKey);
 
         return OkHttpUtils.doPost(httpClient, baseUrl + "order/withdrawCoin",
+                JSON.toJSONString(request));
+    }
+
+    /**
+     * 商户划转b2c
+     * @param request_id
+     * @param currency
+     * @param amount
+     * @param to_customer_ref_id
+     * @param notify_url
+     * @param partner_id
+     * @param nonce
+     * @return
+     */
+    public String payout(String request_id, String currency, String amount, String to_customer_ref_id, String notify_url,
+                         String partner_id, String nonce) {
+        PayoutOrderRequest request = new PayoutOrderRequest();
+        request.setRequest_id(request_id);
+        request.setCurrency(currency);
+        request.setAmount(amount);
+        request.setTo_customer_ref_id(to_customer_ref_id);
+        request.setNotify_url(notify_url);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "order/payout",
                 JSON.toJSONString(request));
     }
 
