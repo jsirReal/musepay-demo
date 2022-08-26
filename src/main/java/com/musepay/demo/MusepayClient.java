@@ -51,7 +51,7 @@ public class MusepayClient {
 
         SignUtils.sign(request, merchantPrivateKey);
 
-        return OkHttpUtils.doPost(httpClient, baseUrl + "order/depositAddress",
+        return OkHttpUtils.doPost(httpClient, baseUrl + "order/deposit_address",
                 JSON.toJSONString(request));
     }
 
@@ -174,7 +174,7 @@ public class MusepayClient {
 
         SignUtils.sign(request, merchantPrivateKey);
 
-        return OkHttpUtils.doPost(httpClient, baseUrl + "order/withdrawCoin",
+        return OkHttpUtils.doPost(httpClient, baseUrl + "order/withdraw",
                 JSON.toJSONString(request));
     }
 
