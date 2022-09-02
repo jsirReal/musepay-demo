@@ -55,6 +55,7 @@ public class ApiTest {
                 "BNB_BSC",
                 "0xADFB656a8D0c0D22c523404c23699f9299975216",
                 "0.3",
+                "C100001",
                 null,
                 "2000051",
                 String.valueOf(System.currentTimeMillis()));
