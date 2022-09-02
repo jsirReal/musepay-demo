@@ -31,10 +31,6 @@ public class ExtractOrderRequest extends CommonRequest {
     @NotBlank
     private String amount;
 
-    // 商户用户ID
-    @NotBlank
-    private String customer_ref_id;
-
     // 通知地址
     private String notify_url;
 }
