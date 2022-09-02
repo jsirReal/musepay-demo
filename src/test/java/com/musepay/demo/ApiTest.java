@@ -11,7 +11,7 @@ public class ApiTest {
     public static String privateKey = "";
 
     /**
-     * public key, please upload it to musepay merchant platform
+     * platform public key, please download from musepay partner dashboard
      */
     public static String platformKey = "";
 
