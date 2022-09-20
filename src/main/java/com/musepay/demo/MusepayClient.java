@@ -137,4 +137,16 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
+    public boolean verifyNotify(String sign, String params){
+
+        VerifySignRequest verifySignRequest = new VerifySignRequest();
+        verifySignRequest.setSign(sign);
+        verifySignRequest.setCharset("UTF-8");
+        verifySignRequest.setKeyType("RSA");
+        verifySignRequest.setPublicKey(platformPublicKey);
+        verifySignRequest.setContent(params);
+        VerifySignResponse response = SignUtils.verifySign(verifySignRequest);
+        return response.getSignOk();
+    }
+
 }
