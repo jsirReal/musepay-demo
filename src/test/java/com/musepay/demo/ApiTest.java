@@ -64,14 +64,8 @@ public class ApiTest {
 
     @Test
     public void verifyNotify(){
-        /**
-         * Example notify data
-         * sign : BOqBjmZ5udZm/IuabYTUPy81PWXU6z6Et0/ns6vpCzpQIO2gXi/f4ZyBpoiDhiFR5nHQnkMaExNAME3FtnRpt0BND0b/xUHjo3Pzn0jt9NHtxcCrfE/z6nlWEibL0XbFRKBBNXkGFPHNVeWGh87e1KNdukCAOIqlyNHmyHhAJRaahYbYM+CtxNMIsEwwqgmdkI4GmGyeVgc1tAfD1SAtvi0Qu1mI2Siy0tWqMAV1zAc3ALi0CE3w7JdfbQi2pearlUGhUni21tvbv73hUID98jB8CXQR0ajyLZ3ctV2mrKEgtnZgAxp9lTaGcYxm5J1pjjjMnUCmYQQM49C698KoAw==
-         * params : actual_amount=0.000000990000000000&currency=TRX&customer_ref_id=C100001&extra_info={"txnHash": "b715736010e39a9b373a17160e78c595c053e366d579be424d3d4a769e381d77", "networkFee": "0.000000000000000000", "blockHeight": "43951251", "customerRefId": "C100001", "numOfConfirms": "1", "sourceAddress": "TLADrBG17GJ1Fu2N4DkqKBMhj6jR3pEb7t", "networkCurrency": "TRX", "destinationAddress": "TUUg6ME6K5F1hKn2n2P4yyPgNzzTd5bSZ4"}&fee_amount=0.000000010000000000&finish_time=1662432675000&order_amount=0.000001000000000000&order_no=2022090680000400002025115135&order_type=charge&partner_id=2000051&product_code=m_charge&request_id=2022090608009900881483970015&status=99
-         */
-        String sign = "BOqBjmZ5udZm/IuabYTUPy81PWXU6z6Et0/ns6vpCzpQIO2gXi/f4ZyBpoiDhiFR5nHQnkMaExNAME3FtnRpt0BND0b/xUHjo3Pzn0jt9NHtxcCrfE/z6nlWEibL0XbFRKBBNXkGFPHNVeWGh87e1KNdukCAOIqlyNHmyHhAJRaahYbYM+CtxNMIsEwwqgmdkI4GmGyeVgc1tAfD1SAtvi0Qu1mI2Siy0tWqMAV1zAc3ALi0CE3w7JdfbQi2pearlUGhUni21tvbv73hUID98jB8CXQR0ajyLZ3ctV2mrKEgtnZgAxp9lTaGcYxm5J1pjjjMnUCmYQQM49C698KoAw==";
-        String params = "actual_amount=0.000000990000000000&currency=TRX&customer_ref_id=C100001&extra_info={\"txnHash\": \"b715736010e39a9b373a17160e78c595c053e366d579be424d3d4a769e381d77\", \"networkFee\": \"0.000000000000000000\", \"blockHeight\": \"43951251\", \"customerRefId\": \"C100001\", \"numOfConfirms\": \"1\", \"sourceAddress\": \"TLADrBG17GJ1Fu2N4DkqKBMhj6jR3pEb7t\", \"networkCurrency\": \"TRX\", \"destinationAddress\": \"TUUg6ME6K5F1hKn2n2P4yyPgNzzTd5bSZ4\"}&fee_amount=0.000000010000000000&finish_time=1662432675000&order_amount=0.000001000000000000&order_no=2022090680000400002025115135&order_type=charge&partner_id=2000051&product_code=m_charge&request_id=2022090608009900881483970015&status=99";
-        boolean signOk = client.verifyNotify(sign,params);
+        String body = "{\"actual_amount\":\"0.000000002000000000\",\"currency\":\"USDT_BSC\",\"customer_ref_id\":\"buck2024\",\"extra_info\":\"{\\\"customerRefId\\\": \\\"buck2024\\\", \\\"destinationAddress\\\": \\\"19acE46vv1NUCzqCyP7naLPpVRjk2e4r2Z\\\"}\",\"fee_amount\":\"0.000000000000000000\",\"finish_time\":\"1663654745000\",\"order_amount\":\"0.000000002000000000\",\"order_no\":\"2022092020000600046060325168\",\"order_type\":\"extract\",\"partner_id\":\"2000051\",\"product_code\":\"m_extract_api\",\"request_id\":\"tk13\",\"sign\":\"kbJnxVJF73eagNTD5BNSpJJp8wvwHWEqnBBOrZ8ZGcbRooq4xflyb2OGJIwrbS1bhcvozNFi0BJy6VLvPdrmLpzRtsw9moWk/yLBt9x4K7iRUkkuLvQ8xQULj2k25KWWzXkk83SX44FVZjk77mJICbI6HKWWbti4xcX///8QudzhYmttEud9VSGjcxcHVTEmWQKX1O0X3zVTC+xWdaQrbgPNhhyFjlr1gNulOs77RPBK6NTg7RHYekr4840dxWZb+Ztnn9795aurm3z/jZTK4uO2FE/wLcidat+7pavackh/JXLkIHC5G5sEPThNOx2KvneClc+n9QCC2CJHT3/Bcg==\",\"status\":88}";
+        boolean signOk = client.verifyNotify(body);
         System.out.println(signOk);
     }
 }

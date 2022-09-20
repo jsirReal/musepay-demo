@@ -2,6 +2,7 @@ package com.musepay.demo;
 
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.musepay.demo.dto.*;
 import com.musepay.demo.utils.OkHttpUtils;
 import com.musepay.demo.utils.SignUtils;
@@ -137,14 +138,17 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
-    public boolean verifyNotify(String sign, String params){
+    public boolean verifyNotify(String body){
+        JSONObject bodyObj = JSONObject.parseObject(body);
+        String sign = bodyObj.getString("sign");
+        String content = SignUtils.assembleContent(bodyObj);
 
         VerifySignRequest verifySignRequest = new VerifySignRequest();
         verifySignRequest.setSign(sign);
         verifySignRequest.setCharset("UTF-8");
         verifySignRequest.setKeyType("RSA");
         verifySignRequest.setPublicKey(platformPublicKey);
-        verifySignRequest.setContent(params);
+        verifySignRequest.setContent(content);
         VerifySignResponse response = SignUtils.verifySign(verifySignRequest);
         return response.getSignOk();
     }
