@@ -30,6 +30,7 @@ public class ApiTest {
     public void depositAddress() {
         String respStr = client.queryDepositAddress("TRX",
                 "C100001",
+                "desc",
                 "2000051",
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
@@ -56,6 +57,7 @@ public class ApiTest {
                 "0.3",
                 "C100001",
                 null,
+                "desc",
                 "2000051",
                 String.valueOf(System.currentTimeMillis()));
 
@@ -67,5 +69,14 @@ public class ApiTest {
         String body = "{\"actual_amount\":\"0.000000002000000000\",\"currency\":\"USDT_BSC\",\"customer_ref_id\":\"buck2024\",\"extra_info\":\"{\\\"customerRefId\\\": \\\"buck2024\\\", \\\"destinationAddress\\\": \\\"19acE46vv1NUCzqCyP7naLPpVRjk2e4r2Z\\\"}\",\"fee_amount\":\"0.000000000000000000\",\"finish_time\":\"1663654745000\",\"order_amount\":\"0.000000002000000000\",\"order_no\":\"2022092020000600046060325168\",\"order_type\":\"extract\",\"partner_id\":\"2000051\",\"product_code\":\"m_extract_api\",\"request_id\":\"tk13\",\"sign\":\"kbJnxVJF73eagNTD5BNSpJJp8wvwHWEqnBBOrZ8ZGcbRooq4xflyb2OGJIwrbS1bhcvozNFi0BJy6VLvPdrmLpzRtsw9moWk/yLBt9x4K7iRUkkuLvQ8xQULj2k25KWWzXkk83SX44FVZjk77mJICbI6HKWWbti4xcX///8QudzhYmttEud9VSGjcxcHVTEmWQKX1O0X3zVTC+xWdaQrbgPNhhyFjlr1gNulOs77RPBK6NTg7RHYekr4840dxWZb+Ztnn9795aurm3z/jZTK4uO2FE/wLcidat+7pavackh/JXLkIHC5G5sEPThNOx2KvneClc+n9QCC2CJHT3/Bcg==\",\"status\":88}";
         boolean signOk = client.verifyNotify(body);
         System.out.println(signOk);
+    }
+
+    @Test
+    public void estimate(){
+        String respStr = client.estimate("USDT_BSC",
+                "100",
+                "2000051",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
     }
 }

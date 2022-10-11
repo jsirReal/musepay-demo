@@ -37,4 +37,7 @@ public class ExtractOrderRequest extends CommonRequest {
 
     // 通知地址
     private String notify_url;
+
+    // 描述
+    private String description;
 }

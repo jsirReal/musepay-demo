@@ -39,11 +39,12 @@ public class MusepayClient {
      * @param nonce
      * @return
      */
-    public String queryDepositAddress(String currency, String customer_ref_id,
+    public String queryDepositAddress(String currency, String customer_ref_id, String description,
                                       String partner_id, String nonce) {
         ChargeAddressQueryRequest request = new ChargeAddressQueryRequest();
         request.setCurrency(currency);
         request.setCustomer_ref_id(customer_ref_id);
+        request.setDescription(description);
 
         request.setPartner_id(partner_id);
         request.setSign_type("RSA");
@@ -94,7 +95,7 @@ public class MusepayClient {
      * @param nonce
      * @return
      */
-    public String withdrawCoin(String request_id, String currency, String address, String amount, String customer_ref_id, String notify_url,
+    public String withdrawCoin(String request_id, String currency, String address, String amount, String customer_ref_id, String notify_url, String description,
                                String partner_id, String nonce) {
         ExtractOrderRequest request = new ExtractOrderRequest();
         request.setRequest_id(request_id);
@@ -103,6 +104,7 @@ public class MusepayClient {
         request.setAmount(amount);
         request.setCustomer_ref_id(customer_ref_id);
         request.setNotify_url(notify_url);
+        request.setDescription(description);
 
         request.setPartner_id(partner_id);
         request.setSign_type("RSA");
@@ -151,6 +153,23 @@ public class MusepayClient {
         verifySignRequest.setContent(content);
         VerifySignResponse response = SignUtils.verifySign(verifySignRequest);
         return response.getSignOk();
+    }
+
+    public String estimate(String currency, String amount,
+                           String partner_id, String nonce){
+        FeeEstimateRequest request = new FeeEstimateRequest();
+        request.setCurrency(currency);
+        request.setAmount(amount);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "fee/estimate",
+                JSON.toJSONString(request));
     }
 
 }

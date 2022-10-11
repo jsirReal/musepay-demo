@@ -16,4 +16,7 @@ public class ChargeAddressQueryRequest extends CommonRequest{
     // 商户用户ID
     private String customer_ref_id;
 
+    // 描述
+    private String description;
+
 }
