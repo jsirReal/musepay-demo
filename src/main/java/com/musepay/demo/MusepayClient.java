@@ -172,4 +172,21 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
+    public String verifyDepositAddress(String currency, String address, String tag,
+                                       String partner_id, String nonce) {
+        VerifyDepositAddressRequest request = new VerifyDepositAddressRequest();
+        request.setCurrency(currency);
+        request.setAddress(address);
+        request.setTag(tag);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "order/verifyDepositAddress",
+                JSON.toJSONString(request));
+    }
 }

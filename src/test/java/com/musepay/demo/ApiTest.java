@@ -79,4 +79,14 @@ public class ApiTest {
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
     }
+
+    @Test
+    public void verifyDepositAddress(){
+        String respStr = client.verifyDepositAddress("BTC_TEST",
+                "n2iXfkTK1djWmBc9j6w8r2KkW59BQyikuX",
+                "",
+                "2000051",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
 }
