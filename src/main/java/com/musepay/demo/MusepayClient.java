@@ -95,12 +95,13 @@ public class MusepayClient {
      * @param nonce
      * @return
      */
-    public String withdrawCoin(String request_id, String currency, String address, String amount, String customer_ref_id, String notify_url, String description,
+    public String withdrawCoin(String request_id, String currency, String address, String tag, String amount, String customer_ref_id, String notify_url, String description,
                                String partner_id, String nonce) {
         ExtractOrderRequest request = new ExtractOrderRequest();
         request.setRequest_id(request_id);
         request.setCurrency(currency);
         request.setAddress(address);
+        request.setTag(tag);
         request.setAmount(amount);
         request.setCustomer_ref_id(customer_ref_id);
         request.setNotify_url(notify_url);
