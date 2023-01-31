@@ -119,6 +119,37 @@ public class MusepayClient {
     }
 
     /**
+     * 发送提币交易
+     * @param request_id
+     * @param currency
+     * @param amount
+     * @param notify_url
+     * @param partner_id
+     * @param nonce
+     * @return
+     */
+    public String pay(String request_id, String currency,  String amount,  String notify_url,
+                               String partner_id, String nonce) {
+        PayOrderRequest request = new PayOrderRequest();
+        request.setRequest_id(request_id);
+        request.setCurrency(currency);
+        request.setAmount(amount);
+        request.setNotify_url(notify_url);
+        request.setPayment_method("on_line");
+        request.setProduct_name("virtual product");
+        request.setRemark("virtual product");
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "order/pay",
+                JSON.toJSONString(request));
+    }
+
+    /**
      * 查询商户余额
      * @param currency
      * @param partner_id
