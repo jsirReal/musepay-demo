@@ -36,6 +36,8 @@ public class PayOrderRequest extends CommonRequest {
     /** 备注 **/
     private String remark;
 
+    private String email;
+
     /** 通知地址 **/
     private String notify_url;
 

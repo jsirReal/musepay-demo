@@ -70,7 +70,8 @@ public class ApiTest {
     public void pay() {
         String respStr = client.pay(String.valueOf(System.currentTimeMillis()),
                 "USDT_TRC20",
-                "0.3",
+                "0.1",
+                "12345@qq.com",
                 null,
                 "2000051",
                 String.valueOf(System.currentTimeMillis()));
