@@ -128,7 +128,7 @@ public class MusepayClient {
      * @param nonce
      * @return
      */
-    public String pay(String request_id, String currency,  String amount,  String notify_url,
+    public String pay(String request_id, String currency,  String amount, String email, String notify_url,
                                String partner_id, String nonce) {
         PayOrderRequest request = new PayOrderRequest();
         request.setRequest_id(request_id);
@@ -138,10 +138,12 @@ public class MusepayClient {
         request.setPayment_method("on_line");
         request.setProduct_name("virtual product");
         request.setRemark("virtual product");
+        request.setEmail(email);
         request.setPartner_id(partner_id);
         request.setSign_type("RSA");
         request.setTimestamp(String.valueOf(System.currentTimeMillis()));
         request.setNonce(nonce);
+        request.setReturn_url("http://www.baidu.com");
 
         SignUtils.sign(request, merchantPrivateKey);
 
