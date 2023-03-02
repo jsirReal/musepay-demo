@@ -151,6 +151,36 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
+    public String payout(String request_id, String currency,  String amount,  String notify_url,
+                         String partner_id, String nonce,String settleCurrency, String accountNumber,String method,
+                         String bankCode,String phone,String name) {
+        PayoutOrderRequest request = new PayoutOrderRequest();
+        request.setRequest_id(request_id);
+        request.setCurrency(currency);
+        request.setAmount(amount);
+        request.setSettle_currency(settleCurrency);
+        request.setNotify_url(notify_url);
+        request.setRemark("virtual product");
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        request.setPayout_method(method);
+        request.setAccount_no(accountNumber);
+        request.setAccount_type("PHONE");
+        request.setCountry("ID");
+        request.setChannel(bankCode);
+        request.setBank_code(bankCode);
+        request.setPhone(phone);
+        request.setAccount_name(name);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "order/payout",
+                JSON.toJSONString(request));
+    }
+
     /**
      * 查询商户余额
      * @param currency
