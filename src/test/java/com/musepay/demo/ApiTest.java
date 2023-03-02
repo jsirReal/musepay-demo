@@ -88,7 +88,7 @@ public class ApiTest {
                 "2000051",
                 String.valueOf(System.currentTimeMillis()),
                 "IDR",
-                "087877958811",
+                "xxx",
                 "wallet_transfer",
                 "ovo",
                 "xxx",
