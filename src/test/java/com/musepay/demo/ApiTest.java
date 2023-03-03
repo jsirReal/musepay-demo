@@ -92,6 +92,7 @@ public class ApiTest {
                 "wallet_transfer",
                 "ovo",
                 "xxx",
+                "xxx",
                 "xxx"
         );
 
