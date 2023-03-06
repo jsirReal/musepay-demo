@@ -124,4 +124,13 @@ public class ApiTest {
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
     }
+
+    @Test
+    public void queryTradeRate(){
+        String respStr = client.queryTradeRate("USDT_TRC20",
+                "IDR",
+                "2000051",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
 }
