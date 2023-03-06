@@ -43,7 +43,7 @@ public class PayoutOrderRequest extends CommonRequest {
     private String payout_method;
     /** 如果payout_method = wallet_transfer， 则必填；
      ** 支持muse,ovo,dana,paypal等**/
-    private String channel;
+    private String wallet_code;
     /** 如果payout_method = bank_transfer， 则必填**/
     private String bank_code;
 
