@@ -271,4 +271,21 @@ public class MusepayClient {
         return OkHttpUtils.doPost(httpClient, baseUrl + "rate/queryTradeRate",
                 JSON.toJSONString(request));
     }
+
+    public String queryPayoutChannel(String country, String currency,
+                                     String partner_id, String nonce) {
+        PayoutChannelRequest request = new PayoutChannelRequest();
+        request.setCountry(country);
+        request.setCurrency(currency);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "fee/queryPayoutChannel",
+                JSON.toJSONString(request));
+    }
 }

@@ -134,4 +134,13 @@ public class ApiTest {
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
     }
+
+    @Test
+    public void queryPayoutChannel(){
+        String respStr = client.queryPayoutChannel("ID",
+                "IDR",
+                "2000051",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
 }
