@@ -151,7 +151,7 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
-    public String payout(String request_id, String currency,  String amount,  String notify_url,
+    public String payout(String request_id, String currency,  String amount,  String notify_url, String country,
                          String partner_id, String nonce,String settleCurrency, String account_type, String accountNumber,String method,
                          String walletCode, String bankCode,String phone, String email, String name,
                          String document_type, String document_id) {
@@ -168,10 +168,9 @@ public class MusepayClient {
         request.setNonce(nonce);
 
         request.setPayout_method(method);
-        request.setAccount_type(account_type);
         request.setAccount_no(accountNumber);
-        request.setAccount_type("PHONE");
-        request.setCountry("ID");
+        request.setAccount_type(account_type);
+        request.setCountry(country);
         request.setWallet_code(walletCode);
         request.setBank_code(bankCode);
         request.setPhone(phone);

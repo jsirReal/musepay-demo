@@ -83,21 +83,22 @@ public class ApiTest {
     public void payout() {
         String respStr = client.payout(String.valueOf(System.currentTimeMillis()),
                 "USDT_TRC20",
-                "0.01",
+                "2",
                 null,
+                "BR",
                 "2000051",
                 String.valueOf(System.currentTimeMillis()),
-                "IDR",
-                null,
-                "xxx",
+                "BRL",
+                "CPF",
+                "39386704870",
                 "wallet_transfer",
-                "ovo",
+                "pix",
                 null,
-                "xxx",
-                "xxx",
-                "xxx",
-                null,
-                null
+                "21312",
+                "123@qq.com",
+                "test",
+                "CPF",
+                "39386704870"
         );
 
         System.out.println(respStr);
