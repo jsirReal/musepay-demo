@@ -90,7 +90,7 @@ public class ApiTest {
                 String.valueOf(System.currentTimeMillis()),
                 "BRL",
                 "CPF",
-                "39386704870",
+                "xxx",
                 "wallet_transfer",
                 "pix",
                 null,
@@ -98,7 +98,7 @@ public class ApiTest {
                 "123@qq.com",
                 "test",
                 "CPF",
-                "39386704870"
+                "xxx"
         );
 
         System.out.println(respStr);
