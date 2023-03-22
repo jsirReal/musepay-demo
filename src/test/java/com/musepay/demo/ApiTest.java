@@ -88,13 +88,16 @@ public class ApiTest {
                 "2000051",
                 String.valueOf(System.currentTimeMillis()),
                 "IDR",
+                null,
                 "xxx",
                 "wallet_transfer",
                 "ovo",
                 null,
                 "xxx",
                 "xxx",
-                "xxx"
+                "xxx",
+                null,
+                null
         );
 
         System.out.println(respStr);
