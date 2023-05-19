@@ -75,6 +75,7 @@ public class ApiTest {
                 null,
                 "2000051",
                 String.valueOf(System.currentTimeMillis()),
+                "on_line",
                 null,
                 null,
                 null,

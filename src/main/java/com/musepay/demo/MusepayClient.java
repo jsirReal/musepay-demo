@@ -130,13 +130,14 @@ public class MusepayClient {
      */
     public String pay(String request_id, String currency,  String amount, String email, String notify_url,
                       String partner_id, String nonce,
+                      String payment_method,
                       String payment_type, String payment_channel, String customer_ref_id, Customer customer) {
         PayOrderRequest request = new PayOrderRequest();
         request.setRequest_id(request_id);
         request.setCurrency(currency);
         request.setAmount(amount);
         request.setNotify_url(notify_url);
-        request.setPayment_method("on_line");
+        request.setPayment_method(payment_method);
         request.setProduct_name("virtual product");
         request.setRemark("virtual product");
         request.setEmail(email);
@@ -149,7 +150,7 @@ public class MusepayClient {
         request.setPayment_type(payment_type);
         request.setPayment_channel(payment_channel);
         request.setCustomer_ref_id(customer_ref_id);
-        request.setCustomer(JSONObject.toJSONString(customer));
+        request.setCustomer(customer == null ? null:JSONObject.toJSONString(customer));
 
         SignUtils.sign(request, merchantPrivateKey);
 
