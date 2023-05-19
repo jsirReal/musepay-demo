@@ -25,18 +25,30 @@ public class PayOrderRequest extends CommonRequest {
     @NotBlank
     private String amount;
 
-    /** 支付类型：on_line=中心化支付，on_chain=链上地址支付 **/
+    /** 支付类型：on_line=收银台，on_chain=链上地址支付，direct=直连 **/
     @NotBlank
     private String payment_method;
+    /**
+     * 支付方式：wallet,virtual_account,qrcode,card,sepa
+     */
+    private String payment_type;
+    /**
+     * ovo, dana, pix,bca,bni
+     */
+    private String payment_channel;
 
     @NotBlank
     /** 商品名称 **/
     private String product_name;
 
+    private String customer_ref_id;
+
     /** 备注 **/
     private String remark;
 
     private String email;
+
+    private String customer;
 
     /** 通知地址 **/
     private String notify_url;

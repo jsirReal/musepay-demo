@@ -129,7 +129,8 @@ public class MusepayClient {
      * @return
      */
     public String pay(String request_id, String currency,  String amount, String email, String notify_url,
-                               String partner_id, String nonce) {
+                      String partner_id, String nonce,
+                      String payment_type, String payment_channel, String customer_ref_id, Customer customer) {
         PayOrderRequest request = new PayOrderRequest();
         request.setRequest_id(request_id);
         request.setCurrency(currency);
@@ -144,6 +145,11 @@ public class MusepayClient {
         request.setTimestamp(String.valueOf(System.currentTimeMillis()));
         request.setNonce(nonce);
         request.setReturn_url("http://www.baidu.com");
+
+        request.setPayment_type(payment_type);
+        request.setPayment_channel(payment_channel);
+        request.setCustomer_ref_id(customer_ref_id);
+        request.setCustomer(JSONObject.toJSONString(customer));
 
         SignUtils.sign(request, merchantPrivateKey);
 
