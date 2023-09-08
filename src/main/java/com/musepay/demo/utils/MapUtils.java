@@ -45,7 +45,7 @@ public class MapUtils {
             if (map.get(key) instanceof JSONObject) {
                 JSONObject valObj =(JSONObject) map.get(key);
                 if (valObj != null && valObj.keySet().size() > 0) {
-                    value = JSONObject.toJSONString(valObj, SerializerFeature.SortField);
+                    value = JSONObject.toJSONString(valObj, SerializerFeature.MapSortField);
                 }
             }
             //eliminate blank value
