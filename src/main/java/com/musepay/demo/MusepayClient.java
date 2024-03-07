@@ -4,8 +4,10 @@ package com.musepay.demo;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.musepay.demo.dto.*;
+import com.musepay.demo.utils.OkHttpSSL;
 import com.musepay.demo.utils.OkHttpUtils;
 import com.musepay.demo.utils.SignUtils;
+import lombok.SneakyThrows;
 import okhttp3.OkHttpClient;
 
 public class MusepayClient {
@@ -28,6 +30,19 @@ public class MusepayClient {
         client.merchantPrivateKey = merchantPrivateKey;
         client.platformPublicKey = platformPublicKey;
         client.httpClient = new OkHttpClient();
+        return client;
+    }
+
+    @SneakyThrows
+    public static MusepayClient buildNoSSL(String baseUrl, String merchantPrivateKey, String platformPublicKey) {
+        MusepayClient client = new MusepayClient();
+        client.baseUrl = baseUrl;
+        client.merchantPrivateKey = merchantPrivateKey;
+        client.platformPublicKey = platformPublicKey;
+        client.httpClient = new OkHttpClient.Builder()
+                .sslSocketFactory(OkHttpSSL.getIgnoreInitedSslContext().getSocketFactory(),OkHttpSSL.IGNORE_SSL_TRUST_MANAGER_X509)
+                .hostnameVerifier(OkHttpSSL.getIgnoreSslHostnameVerifier())
+                .build();
         return client;
     }
 
