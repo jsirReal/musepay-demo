@@ -176,7 +176,7 @@ public class MusepayClient {
     public String payout(String request_id, String currency,  String amount,  String notify_url, String country,
                          String partner_id, String nonce,String settleCurrency, String account_type, String accountNumber,String method,
                          String walletCode, String bankCode,String phone, String email, String name,
-                         String document_type, String document_id) {
+                         String document_type, String document_id, String bank_routing_code) {
         PayoutOrderRequest request = new PayoutOrderRequest();
         request.setRequest_id(request_id);
         request.setCurrency(currency);
@@ -196,6 +196,7 @@ public class MusepayClient {
         request.setWallet_code(walletCode);
         request.setBank_code(bankCode);
         request.setPhone(phone);
+        request.setBank_routing_code(bank_routing_code);
         request.setEmail(email);
         request.setAccount_name(name);
 

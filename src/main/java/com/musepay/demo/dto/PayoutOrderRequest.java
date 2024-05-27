@@ -2,6 +2,7 @@ package com.musepay.demo.dto;
 
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -68,6 +69,9 @@ public class PayoutOrderRequest extends CommonRequest {
     private String email;
 
     private String phone;
+
+    @Length(max = 100)
+    private String bank_routing_code;
 
     /**
      * 其他信息

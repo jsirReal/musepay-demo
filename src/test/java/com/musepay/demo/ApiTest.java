@@ -103,7 +103,8 @@ public class ApiTest {
                 "123@qq.com",
                 "test",
                 "CPF",
-                "xxx"
+                "xxx",
+                null
         );
 
         System.out.println(respStr);
