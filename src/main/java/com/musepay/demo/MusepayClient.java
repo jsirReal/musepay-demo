@@ -283,7 +283,7 @@ public class MusepayClient {
     }
 
     public String queryTradeRate(String baseCurrency, String quoteCurrency,
-                                       String partner_id, String nonce) {
+                                 String partner_id, String nonce) {
         QueryRateRequest request = new QueryRateRequest();
         request.setBaseCurrency(baseCurrency);
         request.setQuoteCurrency(quoteCurrency);
@@ -315,4 +315,62 @@ public class MusepayClient {
         return OkHttpUtils.doPost(httpClient, baseUrl + "fee/queryPayoutChannel",
                 JSON.toJSONString(request));
     }
+
+    public String queryConversionTradeRate(String symbol, String side,
+                                           String partner_id, String nonce) {
+
+        ConversionRateRequest request = new ConversionRateRequest();
+        request.setSymbol(symbol);
+        request.setSide(side);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "conversion/rate",
+                JSON.toJSONString(request));
+    }
+
+    public String conversionQuote(String symbol, String amount, String currency, String side, String xid,
+                                  String partner_id, String nonce) {
+
+        ConversionQuoteRequest request = new ConversionQuoteRequest();
+        request.setSymbol(symbol);
+        request.setAmount(amount);
+        request.setCurrency(currency);
+        request.setSide(side);
+        request.setXid(xid);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "conversion/quote",
+                JSON.toJSONString(request));
+    }
+
+    public String conversionExecute(String quoteId,
+                                    String partner_id, String nonce) {
+
+        ConversionExecuteRequest request = new ConversionExecuteRequest();
+        request.setQuoteId(quoteId);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "conversion/execute",
+                JSON.toJSONString(request));
+    }
+
+
 }

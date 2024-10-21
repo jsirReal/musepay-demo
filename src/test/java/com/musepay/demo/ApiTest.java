@@ -146,9 +146,29 @@ public class ApiTest {
     }
 
     @Test
-    public void queryPayoutChannel(){
-        String respStr = client.queryPayoutChannel("ID",
-                "IDR",
+    public void queryConversionTradeRate(){
+        String respStr = client.queryConversionTradeRate("ETH-USDT",
+                "BUY",
+                "2000051",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void conversionQuote(){
+        String respStr = client.conversionQuote("ETH-USDT",
+                "100",
+                "USDT",
+                "BUY",
+                String.valueOf(System.currentTimeMillis()),
+                "2000051",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void conversionExecute(){
+        String respStr = client.conversionExecute("xxxxx",
                 "2000051",
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
