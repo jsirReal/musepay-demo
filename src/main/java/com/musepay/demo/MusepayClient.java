@@ -173,6 +173,35 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
+
+    public String payOnChain(String request_id, String currency,  String amount, String email, String notify_url,
+                             String partner_id, String nonce,
+                             String payment_method,
+                             String customer_ref_id, String pay_currency) {
+        PayOrderRequest request = new PayOrderRequest();
+        request.setRequest_id(request_id);
+        request.setCurrency(currency);
+        request.setPay_currency(pay_currency);
+        request.setAmount(amount);
+        request.setNotify_url(notify_url);
+        request.setPayment_method(payment_method);
+        request.setProduct_name("virtual product");
+        request.setRemark("virtual product");
+        request.setEmail(email);
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+        request.setReturn_url("http://www.baidu.com");
+        request.setCustomer_ref_id(customer_ref_id);
+
+        SignUtils.sign(request, merchantPrivateKey);
+        System.out.println(JSON.toJSONString(request));
+        return OkHttpUtils.doPost(httpClient, baseUrl + "order/pay",
+                JSON.toJSONString(request));
+    }
+
+
     public String payout(String request_id, String currency,  String amount,  String notify_url, String country,
                          String partner_id, String nonce,String settleCurrency, String account_type, String accountNumber,String method,
                          String walletCode, String bankCode,String phone, String email, String name,
@@ -204,9 +233,10 @@ public class MusepayClient {
         request.setDocument_id(document_id);
 
         SignUtils.sign(request, merchantPrivateKey);
-
+        System.out.println(JSON.toJSONString(request));
         return OkHttpUtils.doPost(httpClient, baseUrl + "order/payout",
                 JSON.toJSONString(request));
+
     }
 
     /**
@@ -352,6 +382,24 @@ public class MusepayClient {
         SignUtils.sign(request, merchantPrivateKey);
 
         return OkHttpUtils.doPost(httpClient, baseUrl + "conversion/quote",
+                JSON.toJSONString(request));
+    }
+
+    public String changeEmail(String user_id,
+                              String email, String partner_id, String nonce) {
+
+        ChangeEmailRequest request = new ChangeEmailRequest();
+        request.setUser_id(user_id);
+        request.setEmail(email);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "user/change-email",
                 JSON.toJSONString(request));
     }
 

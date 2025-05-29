@@ -55,4 +55,7 @@ public class PayOrderRequest extends CommonRequest {
 
     /** 前台跳转地址 **/
     private String return_url;
+
+    private String pay_currency;
+
 }
