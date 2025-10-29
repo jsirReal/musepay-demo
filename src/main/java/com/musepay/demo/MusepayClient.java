@@ -420,5 +420,25 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
+    public String scanPay(String request_id, String user_xid, String qrcode, String amount, String notify_url,
+                          String partner_id, String nonce) {
+        ScanPayOrderRequest request = new ScanPayOrderRequest();
+        request.setRequest_id(request_id);
+        request.setUser_xid(user_xid);
+        request.setQrcode(qrcode);
+        request.setAmount(amount);
+        request.setNotify_url(notify_url);
+
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "scanPay/submit",
+                JSON.toJSONString(request));
+    }
+
 
 }

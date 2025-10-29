@@ -314,4 +314,16 @@ public class ApiTest {
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
     }
+
+    @Test
+    public void scanPaySubmit(){
+        String  respStr=client.scanPay(String.valueOf(System.currentTimeMillis()),
+                "boom",
+                "00020101021229370016A000000677010111011300666102576555802TH530376454044.22630464C9",
+                "100",
+                "https://www.baidu.com",
+                "2000109",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
 }
