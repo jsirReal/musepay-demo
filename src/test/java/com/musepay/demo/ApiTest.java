@@ -29,7 +29,7 @@ public class ApiTest {
 
     @Test
     public void depositAddress() {
-        String respStr = client.queryDepositAddress("USDT",
+        String respStr = client.queryDepositAddress("USDT_BSC_TEST",
                 "C100036",
                 "desc",
                 "2000109",
@@ -56,7 +56,7 @@ public class ApiTest {
                 "USDT_BSC_TEST",
                 "0x7B8a14Bb5AFaC03b38b3631d069B4D954ea3DB1F",
                 null,
-                "1.2",
+                "1.6",
                 "C100011",
                 null,
                 "desc",
@@ -93,9 +93,11 @@ public class ApiTest {
 
     }
 
-    //pkr 支付
+    /**
+     * 印尼
+     */
     @Test
-    public void payPkr() {
+    public void payIdr() {
         Customer customer = new Customer();
         customer.setCountry("");
         customer.setName("");
@@ -105,21 +107,80 @@ public class ApiTest {
         customer.setDocumentType("");
 
         String respStr = client.pay(String.valueOf(System.currentTimeMillis()),
-                "PKR",
-                "120",
+                "IDR",
+                "15555",
                 "123156225@qq.com",
                 null,
                 "2000109",
                 String.valueOf(System.currentTimeMillis()),
                 "direct",
                 "wallet",
-                "jazzcash",
+                "dana",
                 null,
                 customer);
         System.out.println(respStr);
 
     }
 
+    /**
+     * 印度
+     */
+    @Test
+    public void payInr() {
+        Customer customer = new Customer();
+        customer.setCountry("");
+        customer.setName("");
+        customer.setEmail("");
+        customer.setPhone("087877958811");
+        customer.setDocumentId("");
+        customer.setDocumentType("");
+
+        String respStr = client.pay(String.valueOf(System.currentTimeMillis()),
+                "INR",
+                "10000",
+                "123156225@qq.com",
+                null,
+                "2000109",
+                String.valueOf(System.currentTimeMillis()),
+                "direct",
+                "wallet",
+                "upi",
+                null,
+                customer);
+        System.out.println(respStr);
+
+    }
+
+    //pkr 支付
+    @Test
+    public void payPkr() {
+        Customer customer = new Customer();
+        customer.setCountry("");
+        customer.setName("");
+        customer.setEmail("");
+        customer.setPhone("");
+        customer.setDocumentId("");
+        customer.setDocumentType("");
+
+        String respStr = client.pay(String.valueOf(System.currentTimeMillis()),
+                "PKR",
+                "50",
+                "",
+                null,
+                "2000109",
+                String.valueOf(System.currentTimeMillis()),
+                "direct",
+                "wallet",
+                "easypaisa",
+                null,
+                customer);
+        System.out.println(respStr);
+
+    }
+
+    /**
+     * 商户收付-收银台
+     */
     @Test
     public void payOnLine() {
         Customer customer = new Customer();
@@ -137,6 +198,18 @@ public class ApiTest {
                 "aaa",
                 "USDT_BSC_TEST");
 
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void scanPaySubmit(){
+        String  respStr=client.scanPay(String.valueOf(System.currentTimeMillis()),
+                "boom",
+                "00020101021229370016A000000677010111011300666102576555802TH530376454044.22630464C9",
+                "100",
+                "https://www.baidu.com",
+                "2000051",
+                String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
     }
 
@@ -165,18 +238,18 @@ public class ApiTest {
     public void payout() {
         String respStr = client.payout(String.valueOf(System.currentTimeMillis()),
                 "IDR",
-                "10333",
+                "13555",
                 null,
                 "ID",
                 "2000109",
                 String.valueOf(System.currentTimeMillis()),
                 "IDR",
                 "EMAIL",
-                "12356789",
+                "00000000",
                 "BANK_TRANSFER",
                 null,
                 "1000120",
-                "21312",
+                "62800000000",
                 "123@qq.com",
                 "test",
                 "CPF",
@@ -188,23 +261,75 @@ public class ApiTest {
     }
 
     @Test
+    public void payoutThb() {
+        String respStr = client.payout(String.valueOf(System.currentTimeMillis()),
+                "THB",
+                "102",
+                null,
+                "TH",
+                "2000109",
+                String.valueOf(System.currentTimeMillis()),
+                "THB",
+                "EMAIL",
+                "9390301571",
+                "BANK_TRANSFER",
+                null,
+                "1000620",
+                "62800000000",
+                "123@qq.com",
+                "jing zhang",
+                "CPF",
+                "xxx",
+                "SBIN0011891"
+        );
+
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void payoutInr() {
+        String respStr = client.payout(String.valueOf(System.currentTimeMillis()),
+                "INR",
+                "500",
+                null,
+                "IN",
+                "2000109",
+                String.valueOf(System.currentTimeMillis()),
+                "INR",
+                "EMAIL",
+                "925010031164305",
+                "BANK_TRANSFER",
+                null,
+                "bank_card",
+                "62800000000",
+                "123@qq.com",
+                "Rajan",
+                "CPF",
+                "xxx",
+                "UTIB0003234"
+        );
+
+        System.out.println(respStr);
+    }
+
+    @Test
     public void payoutPkr() {
         String respStr = client.payout(String.valueOf(System.currentTimeMillis()),
                 "PKR",
-                "130",
+                "100",
                 null,
                 "PK",
                 "2000109",
                 String.valueOf(System.currentTimeMillis()),
                 "PKR",
-                "EMAIL",
-                "01234567890123",
-                "BANK_TRANSFER",
-                null,
+                "PHONE",
+                "030947132012345",
+                "WALLET_TRANSFER",
+                "JAZZCASH",
                 "1001113",
-                "3123456789",
+                "030947132012345",
                 "123@qq.com",
-                "Ali Khan",
+                "jing zhang",
                 "CPF",
                 "4210112345679",
                 "SBIN0011891"
@@ -212,6 +337,8 @@ public class ApiTest {
 
         System.out.println(respStr);
     }
+
+
     @Test
     /***
      * 商户提MPU到musewallet
