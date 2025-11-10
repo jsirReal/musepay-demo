@@ -9,7 +9,12 @@ public class ApiTest {
     /**
      * private key, please keep it in a safe place
      */
-    public static String privateKey = "MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDX1gkQDfjY17X3ctFUK4kij+soicP0ZLRsFv9LmsDtVZ3tnP7jnfdXpKZ58T8UyNj8m63A9UKaiRe8yyCX7iNKoEZiN5i4Nl7EQ3BBTks2v132mH/mtOvPiczynpEuerVVfbC+0qI50TBaDfe+lLKURzoUs9KZZUWrUyeQTs7PoK6XIB2sN7v8dW4t8kSZ8honG25G3t8PGQKybUVlj1ALhCsxcDzOIi44yhW1LQ/0irHQJRjoZkgbEYnScep1SB1ShqBuAqLSzJSr2xmQn294+CHsQTGgT6zl17GVErAT/GjAR1+DMrLcodBx1bUNoYRJpcVIi6zzw5eC1G2lSkJ7AgMBAAECggEALwM0+CVC9eCOhzagN+g/t6KHg032u84PqpebxhkQOuHyQ2Z18phe3t1DUb5lkh5pfSRfxW7msgh4fiv0joNVdpTQn+YiQsW9AJz7342xPlySl/sBqPvxfUQzuwkk8G3T/6ogDICOy28wS/1M4Fs9RqT5FrdQgQ8ZDMdRD9LKo1iizDSZGX8HhLT7xodXW28b8rC8WiIWdoG/SI69iRTH+hmGLHKKLnNfZCEeTfumV/X9uNu+lmcrAKAeUylP9teavCP3ctVMvh6s0gxcdgJapRapQMP91+bUzSmROVvi1RYVq8ZH22PznGSDDdsFX5IJI2Bw8MfWO12hdEp80Ts2eQKBgQD/kIS6uEoD6Ur1j97smhKydT/K9dAhTD/z2zr900ZWxbdT9EGg77xK0P51HxyJ2WmtTOeQu1Ffgq1nwDHIAP+mFWxDFmupDkmTsUMP5E25CI/bx2qgeuwZgpDivQdQJDfCv99OT3U7CiGPdvx40D06fWpMs0vAJjAtHV52CA9KlwKBgQDYNC/MXS19eRvK/pv2ez8XUhTBVu6O1iiPiyPlMRR/2O9kxTHKLE8UbS8rB9XNyv8OrwHuW7aJFd6MNuCMCyo4OaEWi2LVMZyBmkCMndUQPetOvoqXB7cGgLLiziARB6gxQeHlTpJtgR3mFijtbfvruryfPlkjo8+xczeAysx3vQKBgGqLG2qkjebXibKaSjuleAoCK5g3po9bNIY7bXqIbBic0PMlL38iswMV4h992u31P8NJ/nguP5xr5FMOozJYiDv7TmkhnbybAj2advTXHzf2w9LCbkd9N5TjA/gjCjt0/fIo/7WsFpmIfblLx7GuTvhldL2JOhlfUlJcnhbjAUz9AoGAIkk8X0NTiHdhQfLYluD6o18f7X00vbAWpJTjL2B2KMQlSqy+9ZnLPKkH9uH6NPWBNznnq34d12WBcmjteSf4HQx+kE2wcbC5ahAlNmd9N2MqYsVywvq1OrHELJWVnj3BnXYeNbgdHoKAVFGlUenELqDhcrt3dWBv+msUHTeL710CgYAUX9Ga+tWdSnsGIkFsgzIlDLE/UTxD1RGUYzNGb7IP7RcK3fLOnSOlIpTWc4jOSOg8noz2MM525sP/wJWWOGK1Fj9rzFSwJ1uebt8Rim2mHkQKQKnkuju6Bv0TI8NfcnmPenIyyZ0W4fxAXAYedBjPcUKtDbgaLNOfgwuIZyKFZQ==";
+//    2000109
+//    public static String privateKey = "MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDX1gkQDfjY17X3ctFUK4kij+soicP0ZLRsFv9LmsDtVZ3tnP7jnfdXpKZ58T8UyNj8m63A9UKaiRe8yyCX7iNKoEZiN5i4Nl7EQ3BBTks2v132mH/mtOvPiczynpEuerVVfbC+0qI50TBaDfe+lLKURzoUs9KZZUWrUyeQTs7PoK6XIB2sN7v8dW4t8kSZ8honG25G3t8PGQKybUVlj1ALhCsxcDzOIi44yhW1LQ/0irHQJRjoZkgbEYnScep1SB1ShqBuAqLSzJSr2xmQn294+CHsQTGgT6zl17GVErAT/GjAR1+DMrLcodBx1bUNoYRJpcVIi6zzw5eC1G2lSkJ7AgMBAAECggEALwM0+CVC9eCOhzagN+g/t6KHg032u84PqpebxhkQOuHyQ2Z18phe3t1DUb5lkh5pfSRfxW7msgh4fiv0joNVdpTQn+YiQsW9AJz7342xPlySl/sBqPvxfUQzuwkk8G3T/6ogDICOy28wS/1M4Fs9RqT5FrdQgQ8ZDMdRD9LKo1iizDSZGX8HhLT7xodXW28b8rC8WiIWdoG/SI69iRTH+hmGLHKKLnNfZCEeTfumV/X9uNu+lmcrAKAeUylP9teavCP3ctVMvh6s0gxcdgJapRapQMP91+bUzSmROVvi1RYVq8ZH22PznGSDDdsFX5IJI2Bw8MfWO12hdEp80Ts2eQKBgQD/kIS6uEoD6Ur1j97smhKydT/K9dAhTD/z2zr900ZWxbdT9EGg77xK0P51HxyJ2WmtTOeQu1Ffgq1nwDHIAP+mFWxDFmupDkmTsUMP5E25CI/bx2qgeuwZgpDivQdQJDfCv99OT3U7CiGPdvx40D06fWpMs0vAJjAtHV52CA9KlwKBgQDYNC/MXS19eRvK/pv2ez8XUhTBVu6O1iiPiyPlMRR/2O9kxTHKLE8UbS8rB9XNyv8OrwHuW7aJFd6MNuCMCyo4OaEWi2LVMZyBmkCMndUQPetOvoqXB7cGgLLiziARB6gxQeHlTpJtgR3mFijtbfvruryfPlkjo8+xczeAysx3vQKBgGqLG2qkjebXibKaSjuleAoCK5g3po9bNIY7bXqIbBic0PMlL38iswMV4h992u31P8NJ/nguP5xr5FMOozJYiDv7TmkhnbybAj2advTXHzf2w9LCbkd9N5TjA/gjCjt0/fIo/7WsFpmIfblLx7GuTvhldL2JOhlfUlJcnhbjAUz9AoGAIkk8X0NTiHdhQfLYluD6o18f7X00vbAWpJTjL2B2KMQlSqy+9ZnLPKkH9uH6NPWBNznnq34d12WBcmjteSf4HQx+kE2wcbC5ahAlNmd9N2MqYsVywvq1OrHELJWVnj3BnXYeNbgdHoKAVFGlUenELqDhcrt3dWBv+msUHTeL710CgYAUX9Ga+tWdSnsGIkFsgzIlDLE/UTxD1RGUYzNGb7IP7RcK3fLOnSOlIpTWc4jOSOg8noz2MM525sP/wJWWOGK1Fj9rzFSwJ1uebt8Rim2mHkQKQKnkuju6Bv0TI8NfcnmPenIyyZ0W4fxAXAYedBjPcUKtDbgaLNOfgwuIZyKFZQ==";
+
+//    2100063
+    public static String privateKey = "MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCnI1kB3OyurSfUaqIc7QPVbehYFeAXz3wRbr0KfL3bkF42r9lKUV5s5S3Bqfwu/L2r8kCFCVg9p6BBEZQFoGNp0LHqYThm89rWfzfFom6hncnUIUu67PYxq2tjazZRj/PxKjaGckPowXe6tbLapV2SiexdXFbW9SlsQQstXQW75aug+PElCYmy4dnv2f7OTF1PAkUTxTR1WNVhWZMRdqozmko3UsWDmT92JSYIzeES2AjktWYNAFrKGv7k/66jVHbieS9JAN6XU5EzBQ1pvlBk3oLHYRk0YKJG9Xrw822OLN8hO/Ty0et7qy/f9C38Nfw4UG4b+ZySZQJ8WbKLJMAbAgMBAAECggEAHRvk5pQpjIqPw0kHDu6gmk1YB+9XZg4213pn5imvj0vnfLLHr0/YmDKZ8369cxmFlyrL3d+wxJwrJun+07QJXGaCdgWUoymZVX42om8VwYQPoKhj3hxjDGeEfn4vqajenYPylxvTg/gd+CCpE7d1Qo5O4juwzCNKoZX6cl4fH4gqUk/yxxzFtUdA3knECmC0SxxesSqKwlKhFPfkLdvH2lBuhojfE+2Yo9AMFz4GfvDA4ds7SYPplm7K/57EA0qE75IBxuCnUIBimMFViZanmh08zbHVdlUcN1fXlxJnyv5dXh65OzLU7t96S1OXsmT3dMpRY4iJkAHdLgKLcRzSQQKBgQDdXtDqgSLV9fv5W9RABfCKlabdO+jzGwglWDQyBtTTioaTMEwY4UIxRm4YR4pXg0QNJnO6ROTcGYKrOJDD+L2WilVgVE4zntsN0Aj3vWLb7Sf/0u87nbU/HydPiSEz8H1AET60oWSXM1MLVaswynBz27QklmTINtskoF6gu3dx8QKBgQDBSLMPDLKawFSU3psRRZVQpHBQQjvkeqBHFDQzeOReQvnExuTQ3F7CE7Vw57+pvyS905sirmwUGfS+1ACqeXVz4Kn9rV2GS930oCBplJQgs7aJK0p0fALvrtL+Qjsga3FDAS8xHPzTDj66NelJI1AOFiUY/VoKwdNn40D4KR3GywKBgCvrBbOgjxK3zJe6Gi/hfclgy0wU+LBSaplOGHzcUhjt4KkO6en9tq4j9O+oMdAO4M9jE46e4HCyNvRVMpNOo/5bz3hfAWzIVVk2LrFHx3cuY8MjTAcd0LmHKrtiz02IprCxOymG43gD3LPg+Sei4hB6RBEGLVRzXaK0llF5H8dhAoGAebfFgym04/1Qhnt03bibIjCbxf8f5m9OtdREV1G/RpkY31F9UQYl6kQtE8/thAEqKxyx6nI6/6Gk3fN2A+T/ER0fD/B4IBVwzhd0sehuK/Xgcps/hQF/e971YkblIzJmHhMF3ADsOiETYYKHyZYiWOybKhSJ+pI7BoY3KNADv2cCgYAWS/XUef5V+R0xnGv6PvPWjT7q/Oa1G1RJ3uSVa3qL2WEWiwJpg+dC6wBTDsx7CRp5X0kodabLUSqCXkaho61AMwgiAgPCwGTXe4dZRs99cgNJjrer9Gcf/CYVA/43tMyuFFSvV794/oZ59nBaF3JyzeZxo3NKUgGpaKIKrlixkg==";
+
     /**
      * platform public key, please download from musepay partner dashboard
      */
@@ -179,7 +184,7 @@ public class ApiTest {
     }
 
     /**
-     * 商户收付-收银台
+     * 商户收付-收银台 交易币种-法币
      */
     @Test
     public void payOnLine() {
@@ -192,7 +197,7 @@ public class ApiTest {
                 "100000",
                 "12345@qq.com",
                 "https://baidu.com",
-                "2000109",
+                "2100063",
                 String.valueOf(System.currentTimeMillis()),
                 "on_line",
                 "aaa",
@@ -201,14 +206,40 @@ public class ApiTest {
         System.out.println(respStr);
     }
 
+    /**
+     * 商户收付-收银台 交易币种USDT
+     */
     @Test
-    public void scanPaySubmit(){
-        String  respStr=client.scanPay(String.valueOf(System.currentTimeMillis()),
+    public void payOnLineUsdt() {
+        Customer customer = new Customer();
+
+        customer.setPhone("087877958811");
+
+        String respStr = client.payOnChain(String.valueOf(System.currentTimeMillis()),
+                "USDT_BSC_TEST",
+                "3",
+                "12345@qq.com",
+                "https://baidu.com",
+                "2100063",
+                String.valueOf(System.currentTimeMillis()),
+                "on_line",
+                "aaa",
+                "USDT_BSC_TEST");
+
+        System.out.println(respStr);
+    }
+
+    /**
+     * 扫码支付接口
+     */
+    @Test
+    public void scanPaySubmit() {
+        String respStr = client.scanPay(String.valueOf(System.currentTimeMillis()),
                 "boom",
                 "00020101021229370016A000000677010111011300666102576555802TH530376454044.22630464C9",
                 "100",
                 "https://www.baidu.com",
-                "2000051",
+                "2100063",
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
     }
@@ -434,8 +465,8 @@ public class ApiTest {
     }
 
     @Test
-    public void changeEmail(){
-        String  respStr=client.changeEmail("1110626",
+    public void changeEmail() {
+        String respStr = client.changeEmail("1110626",
                 "ztmsdulv12@snapmail.cc",
                 "2000109",
                 String.valueOf(System.currentTimeMillis()));
