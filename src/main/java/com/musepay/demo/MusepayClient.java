@@ -9,6 +9,7 @@ import com.musepay.demo.utils.OkHttpUtils;
 import com.musepay.demo.utils.SignUtils;
 import lombok.SneakyThrows;
 import okhttp3.OkHttpClient;
+import org.apache.commons.lang3.StringUtils;
 
 public class MusepayClient {
 
@@ -437,6 +438,105 @@ public class MusepayClient {
         SignUtils.sign(request, merchantPrivateKey);
 
         return OkHttpUtils.doPost(httpClient, baseUrl + "scanPay/submit",
+                JSON.toJSONString(request));
+    }
+
+    public String kycLink(String request_id, String user_xid, String level_name,
+                          String partner_id, String nonce) {
+        KycLinkRequest request = new KycLinkRequest();
+        request.setRequest_id(request_id);
+        request.setUser_xid(user_xid);
+        request.setLevel_name(level_name);
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+        SignUtils.sign(request, merchantPrivateKey);
+        return OkHttpUtils.doPost(httpClient, baseUrl + "kyc/link",
+                JSON.toJSONString(request));
+    }
+
+    public String kycUpload(String request_id, String user_xid, KycDocument document,
+                            String partner_id, String nonce) {
+        KycUploadRequest request = new KycUploadRequest();
+        request.setRequest_id(request_id);
+        request.setUser_xid(user_xid);
+        request.setDocument(document);
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+        SignUtils.sign(request, merchantPrivateKey);
+        return OkHttpUtils.doPost(httpClient, baseUrl + "kyc/upload",
+                JSON.toJSONString(request));
+    }
+
+    public String kycQuery(String request_id, String user_xid,
+                           String partner_id, String nonce) {
+        KycQueryRequest request = new KycQueryRequest();
+        request.setRequest_id(request_id);
+        request.setUser_xid(user_xid);
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+        SignUtils.sign(request, merchantPrivateKey);
+        return OkHttpUtils.doPost(httpClient, baseUrl + "kyc/query",
+                JSON.toJSONString(request));
+    }
+
+    public String kytWalletCheck(String request_id, String user_xid, String wallet_address, String chain,
+                                 String partner_id, String nonce) {
+        KytWalletCheckRequest request = new KytWalletCheckRequest();
+        request.setRequest_id(request_id);
+        request.setUser_xid(user_xid);
+        request.setWallet_address(wallet_address);
+        request.setChain(chain);
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+        SignUtils.sign(request, merchantPrivateKey);
+        return OkHttpUtils.doPost(httpClient, baseUrl + "kyt/wallet-check",
+                JSON.toJSONString(request));
+    }
+
+    public String kytTransactionCheck(String request_id, String user_xid, String chain, String currency, String amount,
+                                      String txn_hash, String destination_address,
+                                      String partner_id, String nonce) {
+        KytTransactionCheckRequest request = new KytTransactionCheckRequest();
+        request.setRequest_id(request_id);
+        request.setUser_xid(user_xid);
+        request.setChain(chain);
+        request.setCurrency(currency);
+        request.setAmount(amount);
+        request.setTxn_hash(txn_hash);
+        request.setDestination_address(destination_address);
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+        SignUtils.sign(request, merchantPrivateKey);
+        return OkHttpUtils.doPost(httpClient, baseUrl + "kyt/transaction-check",
+                JSON.toJSONString(request));
+    }
+
+    public String kytQuery(String request_id, String session_id, String risk_order_no,
+                           String partner_id, String nonce) {
+        KytQueryRequest request = new KytQueryRequest();
+        String queryRequestId = request_id;
+        if (StringUtils.isBlank(session_id) && StringUtils.isBlank(queryRequestId)) {
+            queryRequestId = risk_order_no;
+        }
+        request.setRequest_id(queryRequestId);
+        request.setSession_id(session_id);
+        request.setRisk_order_no(risk_order_no);
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+        SignUtils.sign(request, merchantPrivateKey);
+        return OkHttpUtils.doPost(httpClient, baseUrl + "kyt/query",
                 JSON.toJSONString(request));
     }
 

@@ -1,6 +1,7 @@
 package com.musepay.demo;
 
 import com.musepay.demo.dto.Customer;
+import com.musepay.demo.dto.KycDocument;
 import org.junit.jupiter.api.Test;
 
 
@@ -322,6 +323,83 @@ public class ApiTest {
                 "00020101021229370016A000000677010111011300666102576555802TH530376454044.22630464C9",
                 "100",
                 "https://www.baidu.com",
+                "2000109",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void kycLink() {
+        String respStr = client.kycLink(
+                String.valueOf(System.currentTimeMillis()),
+                "demo_user_001",
+                "basic-kyc",
+                "2000109",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void kycUpload() {
+        KycDocument document = new KycDocument();
+        document.setType("PASSPORT");
+        document.setCountry("SG");
+        document.setFront("data:image/png;base64,REPLACE_WITH_FRONT_BASE64");
+        document.setBack("data:image/png;base64,REPLACE_WITH_BACK_BASE64");
+        document.setFace("data:image/png;base64,REPLACE_WITH_FACE_BASE64");
+
+        String respStr = client.kycUpload(
+                String.valueOf(System.currentTimeMillis()),
+                "demo_user_001",
+                document,
+                "2000109",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void kycQuery() {
+        String respStr = client.kycQuery(
+                String.valueOf(System.currentTimeMillis()),
+                "demo_user_001",
+                "2000109",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void kytWalletCheck() {
+        String respStr = client.kytWalletCheck(
+                String.valueOf(System.currentTimeMillis()),
+                "demo_user_001",
+                "0xdF20e587D3311270A19cAb7f63953Bc37C8999ba",
+                "BSC_TEST",
+                "2000109",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void kytTransactionCheck() {
+        String respStr = client.kytTransactionCheck(
+                String.valueOf(System.currentTimeMillis()),
+                "demo_user_001",
+                "BSC_TEST",
+                "USDT_BSC_TEST",
+                "100",
+                "0x1111111111b11d1111111a1b5cd113c90891135112acef112861d34712f4537f",
+                "0xdF20e587D3311270A19cAb7f63953Bc37C8999ba",
+                "2000109",
+                String.valueOf(System.currentTimeMillis()));
+        System.out.println(respStr);
+    }
+
+    @Test
+    public void kytQuery() {
+        String respStr = client.kytQuery(
+                "",
+                "",
+                "kyt-wallet-202404010001",
                 "2000109",
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);
