@@ -371,7 +371,6 @@ public class ApiTest {
     public void kytWalletCheck() {
         String respStr = client.kytWalletCheck(
                 String.valueOf(System.currentTimeMillis()),
-                "demo_user_001",
                 "0xdF20e587D3311270A19cAb7f63953Bc37C8999ba",
                 "BSC_TEST",
                 "2000109",
@@ -383,7 +382,6 @@ public class ApiTest {
     public void kytTransactionCheck() {
         String respStr = client.kytTransactionCheck(
                 String.valueOf(System.currentTimeMillis()),
-                "demo_user_001",
                 "BSC_TEST",
                 "USDT_BSC_TEST",
                 "100",

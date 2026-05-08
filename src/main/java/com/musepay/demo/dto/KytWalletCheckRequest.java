@@ -8,7 +8,6 @@ import lombok.ToString;
 public class KytWalletCheckRequest extends CommonRequest {
 
     private String request_id;
-    private String user_xid;
     private String wallet_address;
     private String chain;
 }
