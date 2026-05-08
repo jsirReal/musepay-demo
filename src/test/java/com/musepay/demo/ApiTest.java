@@ -384,7 +384,6 @@ public class ApiTest {
                 String.valueOf(System.currentTimeMillis()),
                 "BSC_TEST",
                 "USDT_BSC_TEST",
-                "100",
                 "0x1111111111b11d1111111a1b5cd113c90891135112acef112861d34712f4537f",
                 "0xdF20e587D3311270A19cAb7f63953Bc37C8999ba",
                 "2000109",

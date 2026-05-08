@@ -118,7 +118,6 @@ public class MusepayClient {
         request.setCurrency(currency);
         request.setAddress(address);
         request.setTag(tag);
-        request.setAmount(amount);
         request.setCustomer_ref_id(customer_ref_id);
         request.setNotify_url(notify_url);
         request.setDescription(description);
@@ -151,7 +150,6 @@ public class MusepayClient {
         PayOrderRequest request = new PayOrderRequest();
         request.setRequest_id(request_id);
         request.setCurrency(currency);
-        request.setAmount(amount);
         request.setNotify_url(notify_url);
         request.setPayment_method(payment_method);
         request.setProduct_name("virtual product");
@@ -183,7 +181,6 @@ public class MusepayClient {
         request.setRequest_id(request_id);
         request.setCurrency(currency);
         request.setPay_currency(pay_currency);
-        request.setAmount(amount);
         request.setNotify_url(notify_url);
         request.setPayment_method(payment_method);
         request.setProduct_name("virtual product");
@@ -210,7 +207,6 @@ public class MusepayClient {
         PayoutOrderRequest request = new PayoutOrderRequest();
         request.setRequest_id(request_id);
         request.setCurrency(currency);
-        request.setAmount(amount);
         request.setSettle_currency(settleCurrency);
         request.setNotify_url(notify_url);
         request.setRemark("virtual product");
@@ -282,7 +278,6 @@ public class MusepayClient {
                            String partner_id, String nonce){
         FeeEstimateRequest request = new FeeEstimateRequest();
         request.setCurrency(currency);
-        request.setAmount(amount);
 
         request.setPartner_id(partner_id);
         request.setSign_type("RSA");
@@ -370,7 +365,6 @@ public class MusepayClient {
 
         ConversionQuoteRequest request = new ConversionQuoteRequest();
         request.setSymbol(symbol);
-        request.setAmount(amount);
         request.setCurrency(currency);
         request.setSide(side);
         request.setXid(xid);
@@ -427,7 +421,6 @@ public class MusepayClient {
         request.setRequest_id(request_id);
         request.setUser_xid(user_xid);
         request.setQrcode(qrcode);
-        request.setAmount(amount);
         request.setNotify_url(notify_url);
 
         request.setPartner_id(partner_id);
@@ -500,14 +493,13 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
-    public String kytTransactionCheck(String request_id, String chain, String currency, String amount,
+    public String kytTransactionCheck(String request_id, String chain, String currency,
                                       String txn_hash, String destination_address,
                                       String partner_id, String nonce) {
         KytTransactionCheckRequest request = new KytTransactionCheckRequest();
         request.setRequest_id(request_id);
         request.setChain(chain);
         request.setCurrency(currency);
-        request.setAmount(amount);
         request.setTxn_hash(txn_hash);
         request.setDestination_address(destination_address);
         request.setPartner_id(partner_id);
