@@ -394,9 +394,8 @@ public class ApiTest {
     @Test
     public void kytQuery() {
         String respStr = client.kytQuery(
-                "",
-                "",
-                "kyt-wallet-202404010001",
+                "1778240039713",
+                "P202404010001",
                 "2000109",
                 String.valueOf(System.currentTimeMillis()));
         System.out.println(respStr);

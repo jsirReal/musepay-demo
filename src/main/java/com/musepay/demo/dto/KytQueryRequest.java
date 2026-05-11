@@ -8,6 +8,5 @@ import lombok.ToString;
 public class KytQueryRequest extends CommonRequest {
 
     private String request_id;
-    private String session_id;
-    private String risk_order_no;
+    private String order_no;
 }

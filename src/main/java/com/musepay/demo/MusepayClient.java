@@ -511,16 +511,10 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
-    public String kytQuery(String request_id, String session_id, String risk_order_no,
-                           String partner_id, String nonce) {
+    public String kytQuery(String request_id, String order_no, String partner_id, String nonce) {
         KytQueryRequest request = new KytQueryRequest();
-        String queryRequestId = request_id;
-        if (StringUtils.isBlank(session_id) && StringUtils.isBlank(queryRequestId)) {
-            queryRequestId = risk_order_no;
-        }
-        request.setRequest_id(queryRequestId);
-        request.setSession_id(session_id);
-        request.setRisk_order_no(risk_order_no);
+        request.setRequest_id(request_id);
+        request.setOrder_no(order_no);
         request.setPartner_id(partner_id);
         request.setSign_type("RSA");
         request.setTimestamp(String.valueOf(System.currentTimeMillis()));
