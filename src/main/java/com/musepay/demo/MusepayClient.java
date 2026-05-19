@@ -40,7 +40,7 @@ public class MusepayClient {
         client.merchantPrivateKey = merchantPrivateKey;
         client.platformPublicKey = platformPublicKey;
         client.httpClient = new OkHttpClient.Builder()
-                .sslSocketFactory(OkHttpSSL.getIgnoreInitedSslContext().getSocketFactory(),OkHttpSSL.IGNORE_SSL_TRUST_MANAGER_X509)
+                .sslSocketFactory(OkHttpSSL.getIgnoreInitedSslContext().getSocketFactory(), OkHttpSSL.IGNORE_SSL_TRUST_MANAGER_X509)
                 .hostnameVerifier(OkHttpSSL.getIgnoreSslHostnameVerifier())
                 .build();
         return client;
@@ -48,6 +48,7 @@ public class MusepayClient {
 
     /**
      * 查询充币地址
+     *
      * @param currency
      * @param customer_ref_id
      * @param partner_id
@@ -75,6 +76,7 @@ public class MusepayClient {
 
     /**
      * 查询订单状态
+     *
      * @param request_id
      * @param order_no
      * @param partner_id
@@ -100,6 +102,7 @@ public class MusepayClient {
 
     /**
      * 发送提币交易
+     *
      * @param request_id
      * @param currency
      * @param address
@@ -135,6 +138,7 @@ public class MusepayClient {
 
     /**
      * 发送提币交易
+     *
      * @param request_id
      * @param currency
      * @param amount
@@ -143,7 +147,7 @@ public class MusepayClient {
      * @param nonce
      * @return
      */
-    public String pay(String request_id, String currency,  String amount, String email, String notify_url,
+    public String pay(String request_id, String currency, String amount, String email, String notify_url,
                       String partner_id, String nonce,
                       String payment_method,
                       String payment_type, String payment_channel, String customer_ref_id, Customer customer) {
@@ -165,7 +169,7 @@ public class MusepayClient {
         request.setPayment_type(payment_type);
         request.setPayment_channel(payment_channel);
         request.setCustomer_ref_id(customer_ref_id);
-        request.setCustomer(customer == null ? null:JSONObject.toJSONString(customer));
+        request.setCustomer(customer == null ? null : JSONObject.toJSONString(customer));
 
         SignUtils.sign(request, merchantPrivateKey);
 
@@ -174,7 +178,7 @@ public class MusepayClient {
     }
 
 
-    public String payOnChain(String request_id, String currency,  String amount, String email, String notify_url,
+    public String payOnChain(String request_id, String currency, String amount, String email, String notify_url,
                              String partner_id, String nonce,
                              String payment_method,
                              String customer_ref_id, String pay_currency) {
@@ -221,9 +225,9 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
-    public String payout(String request_id, String currency,  String amount,  String notify_url, String country,
-                         String partner_id, String nonce,String settleCurrency, String account_type, String accountNumber,String method,
-                         String walletCode, String bankCode,String phone, String email, String name,
+    public String payout(String request_id, String currency, String amount, String notify_url, String country,
+                         String partner_id, String nonce, String settleCurrency, String account_type, String accountNumber, String method,
+                         String walletCode, String bankCode, String phone, String email, String name,
                          String document_type, String document_id, String bank_routing_code) {
         PayoutOrderRequest request = new PayoutOrderRequest();
         request.setRequest_id(request_id);
@@ -260,6 +264,7 @@ public class MusepayClient {
 
     /**
      * 查询商户余额
+     *
      * @param currency
      * @param partner_id
      * @param nonce
@@ -281,7 +286,7 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
-    public boolean verifyNotify(String body){
+    public boolean verifyNotify(String body) {
         JSONObject bodyObj = JSONObject.parseObject(body);
         String sign = bodyObj.getString("sign");
         String content = SignUtils.assembleContent(bodyObj);
@@ -297,7 +302,7 @@ public class MusepayClient {
     }
 
     public String estimate(String currency, String amount,
-                           String partner_id, String nonce){
+                           String partner_id, String nonce) {
         FeeEstimateRequest request = new FeeEstimateRequest();
         request.setCurrency(currency);
         request.setAmount(amount);
@@ -439,5 +444,38 @@ public class MusepayClient {
                 JSON.toJSONString(request));
     }
 
+
+    public String kytTransactionCheck(String request_id,
+                                    String chain, String currency , String txn_hash, String destination_address,String partner_id,String nonce) {
+
+        KytTransactionCheckRequest request = new KytTransactionCheckRequest();
+        request.setRequest_id(request_id);
+        request.setChain(chain);
+        request.setCurrency(currency);
+        request.setTxn_hash(txn_hash);
+        request.setDestination_address(destination_address);
+        request.setPartner_id(partner_id);
+        request.setNonce(nonce);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+
+        SignUtils.sign(request, merchantPrivateKey);
+
+        return OkHttpUtils.doPost(httpClient, baseUrl + "kyt/transaction-check",
+                JSON.toJSONString(request));
+    }
+
+    public String kytQuery(String request_id, String order_no, String partner_id, String nonce) {
+        KytQueryRequest request = new KytQueryRequest();
+        request.setRequest_id(request_id);
+        request.setOrder_no(order_no);
+        request.setPartner_id(partner_id);
+        request.setSign_type("RSA");
+        request.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        request.setNonce(nonce);
+        SignUtils.sign(request, merchantPrivateKey);
+        return OkHttpUtils.doPost(httpClient, baseUrl + "kyt/query",
+                JSON.toJSONString(request));
+    }
 
 }
