@@ -41,3 +41,4 @@ build/
 
 **/ApiDev.java
 **/ApiPrd.java
+config/scanpay-v2.properties
