@@ -41,4 +41,5 @@ build/
 
 **/ApiDev.java
 **/ApiPrd.java
-config/fiat-payout.properties
+# config 下仅提交 *.properties.example 模板，真实配置（含密钥）全部忽略
+config/*.properties
