@@ -1,0 +1,7 @@
+# Copy to config/fiat-payout.properties. This file is ignored by git.
+base_url=http://127.0.0.1:8090
+partner_id=replace-with-your-partner-id
+merchant_private_key=replace-with-base64-private-key
+platform_public_key=replace-with-base64-platform-public-key
+# Set true only for a local HTTPS endpoint with a self-signed certificate.
+insecure_ssl=false
