@@ -55,7 +55,7 @@ public class FiatPayoutClientTest {
     @Test
     public void supportsBanks() {
         FiatPayoutConfig config = FiatPayoutConfig.load();
-        System.out.println(config.client().supportsBanks("PH", "PHP", "1000.00",
+        System.out.println(config.client().supportsBanks("TH", "THB", "100.00",
                 config.getPartnerId(), nonce("banks")));
     }
 
@@ -84,7 +84,7 @@ public class FiatPayoutClientTest {
 
     // ---------- 业务链路 ----------
 
-    /** POST /payouts/quote：国际汇款（04/SWIFT）报价，DE/EUR/Deutsche，个人(01)/第三方(third)。 */
+    /** POST /payouts/quote：国际汇款（04/SWIFT）报价，DE/EUR/Deutsche，个人(PERSONAL)/第三方(third)。 */
     @Test
     public void quoteSwift() {
         FiatPayoutConfig config = FiatPayoutConfig.load();
@@ -217,7 +217,7 @@ public class FiatPayoutClientTest {
         quote.put("receive_amount", TEST_AMOUNT);
         quote.put("beneficiary_country", TEST_COUNTRY);
         quote.put("beneficiary_bank_id", TEST_BANK_ID);
-        quote.put("account_type", "01");
+        quote.put("account_type", "PERSONAL");
         quote.put("beneficiary_relationship", "third");
         quote.put("clear_network", TEST_CLEARING_NETWORK);
         quote.put("beneficiaryFields", fields);
@@ -225,34 +225,34 @@ public class FiatPayoutClientTest {
         return quote;
     }
 
-    /** 本地付款（08/LOCAL_PAYMENT）报价参数：CN/AliPay 示例。 */
+    /** 本地付款（08/LOCAL_PAYMENT）报价参数：TH/SCB 示例。 */
     private static Map<String, Object> quoteLocalParams(String suffix) {
         Map<String, Object> individual = new LinkedHashMap<>();
-        individual.put("account_no", "15800012345");
-        individual.put("bank_name", "AliPay");
-        individual.put("address", "CN");
-        individual.put("first_name", "Li");
-        individual.put("last_name", "Hao");
+        individual.put("account_no", "0891234567");
+        individual.put("bank_name", "Siam Commercial Bank");
+        individual.put("address", "TH");
+        individual.put("first_name", "Somchai");
+        individual.put("last_name", "Jaidee");
         individual.put("gender", "male");
 
         Map<String, Object> quote = new LinkedHashMap<>();
         quote.put("request_id", requestId(suffix));
         quote.put("quote_mode", "dest");
         quote.put("pay_currency", "USDT");
-        quote.put("receive_currency", "CNY");
-        quote.put("receive_amount", "13.00");
-        quote.put("beneficiary_country", "CN");
-        quote.put("beneficiary_bank_id", "2000800");
-        quote.put("account_type", "01");
+        quote.put("receive_currency", "THB");
+        quote.put("receive_amount", "1000.00");
+        quote.put("beneficiary_country", "TH");
+        quote.put("beneficiary_bank_id", "1000616");
+        quote.put("account_type", "PERSONAL");
         quote.put("beneficiary_relationship", "own");
         quote.put("clear_network", "LOCAL_PAYMENT");
         quote.put("individual_beneficiary", individual);
         return quote;
     }
 
-    /** 先跑一次国际汇款报价，从响应提取 order_no（报价 60s 过期，create/query 需用即时报价）。 */
+    /** 先跑一次本地付款报价，从响应提取 order_no（报价 60s 过期，create/query 需用即时报价）。 */
     private static String quoteOrderNo(FiatPayoutConfig config) {
-        String response = config.client().quote(quoteSwiftParams("order-no"),
+        String response = config.client().quote(quoteLocalParams("order-no"),
                 config.getPartnerId(), nonce("order-no"));
         JSONObject root = JSON.parseObject(response);
         JSONObject data = root.getJSONObject("data");
