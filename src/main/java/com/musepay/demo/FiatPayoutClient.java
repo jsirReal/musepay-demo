@@ -108,13 +108,21 @@ public class FiatPayoutClient {
         return post("supports/networks", params, partnerId, nonce);
     }
 
-    /** POST /v1/fiatpayout/supports/fields：指定银行收款必填字段（key 回填到 quote 的 beneficiaryFields）。 */
+    /** POST /v1/fiatpayout/supports/fields：指定银行收款必填字段（key 回填到 quote 的 beneficiaryFields）。
+     *  network 可选：银行类收款方式选定清算网络后传入（按网络过滤字段，如 LOCAL_PAYMENT/SWIFT 场景
+     *  返回不同字段集）；钱包或未选网络场景不传。 */
     public String supportsFields(String country, String currency, String bankCode,
+                                 String partnerId, String nonce) {
+        return supportsFields(country, currency, bankCode, null, partnerId, nonce);
+    }
+
+    public String supportsFields(String country, String currency, String bankCode, String network,
                                  String partnerId, String nonce) {
         Map<String, Object> params = new LinkedHashMap<>();
         put(params, "country", country);
         put(params, "currency", currency);
         put(params, "bank_code", bankCode);
+        put(params, "network", network);
         return post("supports/fields", params, partnerId, nonce);
     }
 
