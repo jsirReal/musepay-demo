@@ -13,7 +13,7 @@ musepay api demo
 
 - `level_name` 必填：L1 / L2 / L1_AML / L2_AML；不能留空，不提供默认档。不是 Sumsub 后台 level 名。
 - create 按同商户＋user_xid 幂等；link 使用唯一 request_id，同 request_id 重试返回原响应。
-- 同商户＋同用户所有档位只允许一笔在途订单；完成或关闭后才能再次申请。
+- 同商户＋同用户所有档位只允许一笔在途订单；链接过期时用同 user_xid 同 level_name 重调 link 即可续链（返回原 fee_order_no，不产生新收费单）；在途期间换档申请会被拒绝。
 - link 创建收费订单，最终审核 GREEN 或 RED＋FINAL 才完成收费；RED＋RETRY 不完成收费。
 - 当前商户 KYC 结果回调与 VCC 一致，没有 RSA 签名，不要套用平台支付回调验签。
 
