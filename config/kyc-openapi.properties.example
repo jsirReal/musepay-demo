@@ -1,0 +1,5 @@
+# Development environment; base_url includes the /v1 API prefix.
+base_url=https://api.dev01.musepay.io/v1
+partner_id=2000051
+merchant_private_key=
+insecure_ssl=false
